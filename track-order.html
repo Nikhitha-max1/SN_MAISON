@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Order | SN MAISON</title>
+<style>
+:root{--ink:#171512;--muted:#77716a;--paper:#f7f4ef;--line:#ded8cf;--accent:#9a8060}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+header{height:82px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 7%;background:#fff}
+.logo{font-family:Georgia,serif;letter-spacing:5px;font-size:22px}.back{color:var(--ink);text-decoration:none;font-size:13px;letter-spacing:1px}
+main{max-width:980px;margin:70px auto;padding:0 24px}
+h1{font-family:Georgia,serif;font-size:48px;font-weight:400;text-align:center;margin:0 0 12px}
+.sub{text-align:center;color:var(--muted);margin-bottom:42px}
+.card{background:#fff;border:1px solid var(--line);padding:38px;max-width:760px;margin:auto}
+.form{display:flex;gap:12px}.form input{flex:1;padding:16px;border:1px solid var(--line);font-size:14px}.form button{padding:16px 28px;background:#171512;color:#fff;border:0;letter-spacing:1px;cursor:pointer}
+.error{color:#a13d35;margin-top:14px;display:none}
+.result{display:none;margin-top:38px}.order-top{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:24px}
+.order-id{font-weight:600}.delivery{color:var(--muted);font-size:13px}
+.timeline{position:relative;margin:38px 0 10px}.step{display:flex;gap:20px;position:relative;min-height:76px}
+.dot{width:18px;height:18px;border-radius:50%;border:2px solid #aaa;background:#fff;position:relative;z-index:2;margin-top:2px}
+.step.done .dot{background:#171512;border-color:#171512}.step.current .dot{background:var(--accent);border-color:var(--accent)}
+.step:not(:last-child) .dot:after{content:"";position:absolute;width:2px;height:76px;background:var(--line);left:6px;top:16px}
+.step.done:not(:last-child) .dot:after{background:#171512}
+.step h3{font-size:14px;margin:0 0 5px}.step p{margin:0;color:var(--muted);font-size:13px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}.info div{border:1px solid var(--line);padding:18px}.label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:7px}
+@media(max-width:650px){h1{font-size:36px}.card{padding:22px}.form{flex-direction:column}.info{grid-template-columns:1fr}.order-top{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">SN MAISON</div>
+  <a class="back" href="index.html">BACK TO SHOP</a>
+</header>
+<main>
+  <h1>Track Your Order</h1>
+  <p class="sub">Enter your order number to see the latest delivery status.</p>
+  <section class="card">
+    <div class="form">
+      <input id="orderInput" type="text" placeholder="Enter Order ID e.g. SN10245">
+      <button onclick="trackOrder()">TRACK ORDER</button>
+    </div>
+    <div id="error" class="error">Order not found. Try <b>SN10245</b> or <b>SN10246</b>.</div>
+    <div id="result" class="result"></div>
+  </section>
+</main>
+<script>
+const orders={
+ "SN10245":{status:3,date:"August 22, 2026",item:"Silk Draped Evening Dress",tracking:"SNM-78451290",courier:"Premium Express",steps:[
+  ["Order Placed","August 18, 2026"],["Confirmed","August 18, 2026"],["Processing","August 19, 2026"],["Shipped","August 20, 2026"],["Out for Delivery","Expected August 22"],["Delivered","Expected August 22"]]},
+ "SN10246":{status:2,date:"August 24, 2026",item:"Structured Ivory Blazer",tracking:"SNM-78451311",courier:"Premium Express",steps:[
+  ["Order Placed","August 18, 2026"],["Confirmed","August 18, 2026"],["Processing","August 19, 2026"],["Shipped","Pending"],["Out for Delivery","Pending"],["Delivered","Expected August 24"]]}
+};
+function trackOrder(){
+ const id=document.getElementById("orderInput").value.trim().toUpperCase();
+ const error=document.getElementById("error"),result=document.getElementById("result");
+ if(!orders[id]){error.style.display="block";result.style.display="none";return}
+ error.style.display="none";const o=orders[id];
+ result.innerHTML=`<div class="order-top"><div><div class="order-id">ORDER ${id}</div><div class="delivery">${o.item}</div></div><div><div class="delivery">Estimated delivery</div><strong>${o.date}</strong></div></div>
+ <div class="timeline">${o.steps.map((s,i)=>`<div class="step ${i<o.status?"done":""} ${i===o.status?"current":""}"><span class="dot"></span><div><h3>${s[0]}</h3><p>${s[1]}</p></div></div>`).join("")}</div>
+ <div class="info"><div><div class="label">Tracking number</div>${o.tracking}</div><div><div class="label">Shipping partner</div>${o.courier}</div></div>`;
+ result.style.display="block";
+}
+</script>
+</body>
+</html>

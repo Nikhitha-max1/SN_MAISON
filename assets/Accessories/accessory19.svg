@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700">
+<rect width="700" height="700" fill="#f7f3ed"/>
+<circle cx="90" cy="90" r="34" fill="none" stroke="#b89a62" stroke-width="3"/>
+<text x="350" y="610" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#171717" letter-spacing="4">SN MAISON</text>
+<text x="350" y="645" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#777" letter-spacing="2">ACCESSORIES · 19</text>
+<path d="M130 240 Q350 180 570 240 L530 500 Q350 550 170 500Z" fill="#c8b8a7"/><rect x="280" y="225" width="140" height="35" rx="10" fill="#b89a62"/></svg>

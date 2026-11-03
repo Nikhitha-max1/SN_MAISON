@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tops — SN MAISON</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="topbar">COMPLIMENTARY SHIPPING ON ORDERS OVER ₹2,999</div>
+<header class="header"><nav class="nav">
+<a class="logo" href="index.html">SN MAISON</a>
+<div class="menu"><a href="shop.html">Shop</a><a href="new-in.html">New In</a><a href="collections.html">Collections</a><a href="lookbook.html">Lookbook</a><a href="about.html">About</a><a href="journal.html">Journal</a></div>
+<div class="actions"><a class="iconbtn" href="search.html">Search</a><a class="iconbtn" href="account.html">Account</a><a class="iconbtn" href="bag.html">Bag <span class="count" data-count>0</span></a></div>
+<a href="track-order.html">Track Order</a>
+</nav></header>
+<main>
+<section class="page-hero"><div class="kicker">SN MAISON</div><h1>Tops</h1><p>Refined tops designed for effortless everyday dressing.</p></section>
+<section class="section"><div class="grid" id="tops-grid"></div></section>
+</main>
+<section class="newsletter"><h2>Stay close to SN MAISON</h2><p>New arrivals, private edits and stories from the studio.</p><form onsubmit="event.preventDefault(); toast('Thank you for joining SN MAISON')"><input type="email" required placeholder="Your email address"><button type="submit">Join</button></form></section>
+<footer class="footer"><div class="footer-inner"><div><div class="logo">SN MAISON</div><p>Modern fashion, considered quietly.</p></div><div><h4>Shop</h4><a href="shop.html">All products</a><a href="new-in.html">New In</a><a href="collections.html">Collections</a></div><div><h4>Discover</h4><a href="lookbook.html">Lookbook</a><a href="about.html">About</a><a href="journal.html">Journal</a></div></div></footer>
+<script src="script.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{renderProducts(products.filter(p=>p.cat==="Tops"),"#tops-grid");});</script>
+</body></html>
